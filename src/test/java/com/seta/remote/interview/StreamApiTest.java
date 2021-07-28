@@ -14,9 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import lombok.extern.slf4j.Slf4j;
-import com.seta.remote.interview.models.Customer;
-import com.seta.remote.interview.models.Order;
-import com.seta.remote.interview.models.Product;
+import com.seta.remote.interview.models.entity.Customer;
+import com.seta.remote.interview.models.entity.Order;
+import com.seta.remote.interview.models.entity.Product;
 import com.seta.remote.interview.repos.CustomerRepo;
 import com.seta.remote.interview.repos.OrderRepo;
 import com.seta.remote.interview.repos.ProductRepo;

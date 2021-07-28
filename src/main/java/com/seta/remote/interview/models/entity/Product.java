@@ -1,4 +1,4 @@
-package com.seta.remote.interview.models;
+package com.seta.remote.interview.models.entity;
 
 import java.util.Set;
 

@@ -2,7 +2,7 @@ package com.seta.remote.interview.repos;
 
 import java.util.List;
 
-import com.seta.remote.interview.models.Order;
+import com.seta.remote.interview.models.entity.Order;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

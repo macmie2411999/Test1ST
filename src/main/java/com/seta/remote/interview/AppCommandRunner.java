@@ -3,8 +3,10 @@ package com.seta.remote.interview;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.seta.remote.interview.models.Order;
-import com.seta.remote.interview.models.Product;
+import com.seta.remote.interview.models.entity.Order;
+import com.seta.remote.interview.models.entity.Product;
+import com.seta.remote.interview.service.InMemoryMovieService;
+import com.seta.remote.interview.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -28,19 +30,23 @@ public class AppCommandRunner implements CommandLineRunner {
 	private ProductRepo productRepos;
 
 
+
 	@Override
 	public void run(String... args) throws Exception {
 		log.info("running runner");
+		MovieService movieService = InMemoryMovieService.getInstance();
+		movieService.findAllDirectors().forEach(System.out::println);
+
 		productRepos.findAll()
 				.stream()
 				.filter(p -> p.getCategory().equalsIgnoreCase("Books"))
 				.filter(p -> p.getPrice() > 100)
 				.collect(Collectors.toList())
 				.forEach(System.out::println);
-		
+
 		List<Order> orders = orderRepos.findAll();
-				
-		
+
+
 
 		List<Product> products = productRepos.findAll();
 		products.stream()
