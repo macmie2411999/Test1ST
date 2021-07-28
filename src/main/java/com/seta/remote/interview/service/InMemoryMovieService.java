@@ -4,6 +4,7 @@ import com.seta.remote.interview.models.CriteriaBean;
 import com.seta.remote.interview.models.Director;
 import com.seta.remote.interview.models.Genre;
 import com.seta.remote.interview.models.Movie;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -11,25 +12,21 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
+@Service
 public class InMemoryMovieService implements MovieService {
 
-    private static final MovieService instance = new InMemoryMovieService();
     private Map<Integer, Movie> movies;
     private Map<Integer, Genre> genres;
     private Map<Integer, Director> directors;
 
-    private InMemoryMovieService() {
+    public InMemoryMovieService() {
         movies = new ConcurrentHashMap<>();
         genres = new ConcurrentHashMap<>();
         directors = new ConcurrentHashMap<>();
         populate();
     }
 
-    public static MovieService getInstance() {
-        return instance;
-    }
-
-    public void populate() {
+    private void populate() {
         movies.put(1, new Movie(1, "500 Days Of Summer", 2009, "tt1022603"));
         movies.put(2, new Movie(2, "Beyond a Reasonable Doubt", 2009, "tt1183251"));
         movies.put(3, new Movie(3, "Gamer", 2009, "tt1034032"));

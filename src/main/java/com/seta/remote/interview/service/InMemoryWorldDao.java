@@ -2,17 +2,18 @@ package com.seta.remote.interview.service;
 
 import com.seta.remote.interview.models.City;
 import com.seta.remote.interview.models.Country;
+import org.springframework.stereotype.Service;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
+@Service
 public class InMemoryWorldDao implements WorldDao {
-    private static InMemoryWorldDao instance;
     private Map<String, Country> countries;
     private Map<Integer, City> cities;
     private Set<String> continents;
 
-    private InMemoryWorldDao() {
+    public InMemoryWorldDao() {
         countries = new ConcurrentHashMap<>();
         cities = new ConcurrentHashMap<>();
         createCountries();
@@ -35,14 +36,6 @@ public class InMemoryWorldDao implements WorldDao {
         continents = new HashSet<>();
         for (Country country : countries.values())
             continents.add(country.getContinent());
-    }
-
-    public static InMemoryWorldDao getInstance() {
-        synchronized (InMemoryWorldDao.class) {
-            if (instance == null)
-                instance = new InMemoryWorldDao();
-        }
-        return instance;
     }
 
     public void createCities1() {

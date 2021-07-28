@@ -1,18 +1,8 @@
 package com.seta.remote.interview;
 
-import com.seta.remote.interview.models.City;
-import com.seta.remote.interview.models.Director;
-import com.seta.remote.interview.models.Movie;
-import com.seta.remote.interview.service.CountryDao;
-import com.seta.remote.interview.service.InMemoryMovieService;
-import com.seta.remote.interview.service.InMemoryWorldDao;
-import com.seta.remote.interview.service.MovieService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
-import java.util.*;
-import java.util.stream.Collectors;
 
 @Slf4j
 @Component
@@ -46,14 +36,6 @@ public class AppCommandRunner implements CommandLineRunner {
 
     private void advanceStreamApi() {
 //        Find the highest populated city of each country:
-        CountryDao countryDao = InMemoryWorldDao.getInstance();
-        List<City> highPopulatedCitiesOfCountries = countryDao.findAllCountries()
-                .stream()
-                .map(country -> country.getCities().stream().max(Comparator.comparing(City::getPopulation)))
-                .filter(Optional::isPresent)
-                .map(Optional::get)
-                .collect(Collectors.toList());
-        highPopulatedCitiesOfCountries.forEach(System.out::println);
 //        Find the most populated city of each continent:
 //        Find the number of movies of each director: Try to solve this problem by assuming that Director class has not the member movies.
 //        Find the number of genres of each director's movies:
@@ -63,14 +45,6 @@ public class AppCommandRunner implements CommandLineRunner {
 //        Find the list of movies having the genres "Drama" and "Comedy" only:
 //        Group the movies by the year and list them:
 //        Sort the countries by their population densities in descending order ignoring zero population countries:
-        MovieService movieService = InMemoryMovieService.getInstance();
-        Collection<Movie> movies = movieService.findAllMovies();
-        Map<String, Long> directorMovieCounts =
-                movies.stream()
-                        .map(Movie::getDirectors)
-                        .flatMap(List::stream)
-                        .collect(Collectors.groupingBy(Director::getName, Collectors.counting()));
-        directorMovieCounts.entrySet().forEach(System.out::println);
     }
 
 }
