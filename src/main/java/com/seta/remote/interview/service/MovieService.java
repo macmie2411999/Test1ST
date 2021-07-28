@@ -8,9 +8,6 @@ import com.seta.remote.interview.models.Movie;
 import java.util.Collection;
 import java.util.List;
 
-/**
- * @author Binnur Kurt (binnur.kurt@gmail.com)
- */
 public interface MovieService {
     Movie findMovieById(int id);
 

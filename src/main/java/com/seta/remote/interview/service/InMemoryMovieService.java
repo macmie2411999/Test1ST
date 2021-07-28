@@ -11,9 +11,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-/**
- * @author Binnur Kurt (binnur.kurt@gmail.com)
- */
 public class InMemoryMovieService implements MovieService {
 
     private static final MovieService instance = new InMemoryMovieService();

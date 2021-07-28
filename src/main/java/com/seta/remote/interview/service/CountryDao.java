@@ -1,26 +1,22 @@
-package com.example.dao;
+package com.seta.remote.interview.service;
+
+import com.seta.remote.interview.models.Country;
 
 import java.util.List;
 import java.util.Set;
 
-import com.example.domain.Country;
-
-/**
- *
- * @author Binnur Kurt (binnur.kurt@gmail.com)
- */
 public interface CountryDao {
-	Country findCountryByCode(String code);
+    Country findCountryByCode(String code);
 
-	Country removeCountry(Country country);
+    Country removeCountry(Country country);
 
-	Country addCountry(Country country);
+    Country addCountry(Country country);
 
-	Country updateCountry(Country country);
+    Country updateCountry(Country country);
 
-	List<Country> findAllCountries();
+    List<Country> findAllCountries();
 
-	List<Country> findCountriesByContinent(String continent);
+    List<Country> findCountriesByContinent(String continent);
 
-	Set<String> getAllContinents();
+    Set<String> getAllContinents();
 }
