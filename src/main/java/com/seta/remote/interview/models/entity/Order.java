@@ -51,5 +51,14 @@ public class Order {
 	@ToString.Exclude
 	@EqualsAndHashCode.Exclude
 	Set<Product> products;
+
+	@Override
+	public String toString() {
+		return "Order{" +
+                "id=" + this.id +
+                ", status='" + this.status + '\'' +
+                ", customer='" + this.customer + '\'' +
+                '}';
+	}
 		
 }
